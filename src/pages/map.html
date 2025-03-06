@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Weather Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../style/output.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #map {
+        height: 500px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      select {
+        margin: 10px;
+        padding: 5px;
+        font-size: 16px;
+      }
+      video {
+        width: 80%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Weather Map - Select a City</h2>
+    <select id="citySelect">
+      <option value="11.5564,104.9282,Phnom Penh">Phnom Penh</option>
+      <option value="40.7128,-74.0060,New York">New York</option>
+      <option value="51.5074,-0.1278,London">London</option>
+      <option value="35.6828,139.7595,Tokyo">Tokyo</option>
+      <option value="48.8566,2.3522,Paris">Paris</option>
+      <option value="-33.8688,151.2093,Sydney">Sydney</option>
+      <option value="25.276987,55.296249,Dubai">Dubai</option>
+      <option value="13.7563,100.5018,Bangkok">Bangkok</option>
+      <option value="52.5200,13.4050,Berlin">Berlin</option>
+      <option value="43.65107,-79.347015,Toronto">Toronto</option>
+    </select>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("map").setView([11.5564, 104.9282], 10); // Default: Phnom Penh
+
+      // Add OpenStreetMap tile layer
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+      // OpenWeatherMap API Key (Replace with your own key)
+      const apiKey = "YOUR_OPENWEATHERMAP_API_KEY";
+
+      // Add Temperature Overlay
+      var weatherLayer = L.tileLayer(
+        `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`,
+        {
+          attribution: "Weather data © OpenWeatherMap",
+        }
+      ).addTo(map);
+
+      // Function to fetch and display weather info
+      function getWeather(lat, lon, cityName) {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            let temp = data.main.temp;
+            let humidity = data.main.humidity;
+            let description = data.weather[0].description;
+            let weatherPopup = `<b>${cityName}</b><br>🌡 Temp: ${temp}°C<br>💧 Humidity: ${humidity}%<br>🌥 ${description}`;
+
+            // Show popup on the map
+            L.popup()
+              .setLatLng([lat, lon])
+              .setContent(weatherPopup)
+              .openOn(map);
+          })
+          .catch((error) => console.log("Weather API Error:", error));
+      }
+
+      // Function to update map based on city selection
+      document
+        .getElementById("citySelect")
+        .addEventListener("change", function () {
+          var coords = this.value.split(",");
+          var lat = parseFloat(coords[0]);
+          var lon = parseFloat(coords[1]);
+          var cityName = coords[2];
+
+          map.setView([lat, lon], 10);
+          getWeather(lat, lon, cityName);
+        });
+    </script>
+    <div class="w-[500px] h-[200px] bg-blue-300"></div>
+    <!-- <script src="//pixel.adsafeprotected.com/jsvid?videoId=6787243e6f79e09475ee62ee5089ba4a&amp;anId=8584&amp;campId=640x480&amp;chanId=/7646/web_weather_us/video/local_forecasts&amp;pubOrder=videoOrders"></script>
+    <video
+      class="jw-video jw-reset"
+      tabindex="-1"
+      disableremoteplayback=""
+      webkit-playsinline=""
+      playsinline=""
+      src="blob:https://weather.com/05b56a6c-4e6f-4ab3-871f-eee7bcd3637f"
+    ></video> -->
+    <video controls>
+      <source
+        src="blob:https://weather.com/05b56a6c-4e6f-4ab3-871f-eee7bcd3637f"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </body>
+</html>
