@@ -4,15 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Card</title>
-    <link rel="stylesheet" href="../style/output.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../output.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
   <body class="p-10">
     <div
-      class="w-1/6 bg-blue-400 p-5 rounded-xl justify-items-center font-serif shadow-lg hover:bg-blue-500"
+      class="w-45 bg-[#07D8FD] p-5 rounded-xl justify-items-center font-serif shadow-lg hover:bg-blue-500"
     >
       <h3 class="text-2xl font-bold">Monday</h3>
       <img
@@ -25,9 +22,9 @@
       <h1 class="pb-2 text-4xl">34 °C</h1>
       <h4>Broken clouds</h4>
     </div>
-    <div class="p-5">
+    <div class="py-5">
       <div
-        class="font-serif w-1/4 bg-blue-300 p-4 rounded-xl justify-items-center shadow-lg hover:bg-blue-400"
+        class="w-70 font-serif bg-[#07D8FD] p-4 rounded-xl justify-items-center shadow-lg hover:bg-blue-500"
       >
         <img
           src="https://t4.ftcdn.net/jpg/02/29/76/63/360_F_229766370_9ecdF5E2zr1xtp1ufBLOyiKaQM3RxJDw.jpg"
@@ -39,24 +36,23 @@
     </div>
 
     <div class="py-5">
-      <div class="font-serif grid sm:grid-cols-2">
-        <div class="">
-          <div class="p-5 bg-blue-300 h-40">
-            <div class="flex gap-5 justify-items-center">
-              <img
-                width="35"
-                height="35"
-                src="https://img.icons8.com/ios-filled/50/settings.png"
-                alt="settings"
-              />
-              <h5 class="text-3xl">UV Index</h5>
-            </div>
-            <div class="pt-4">
-              <h4 class="text-3xl">13.94 °C</h4>
-              <p>Extreme</p>
-            </div>
+      <div class="font-serif grid md:grid-cols-2">
+        <div class="p-5 bg-[#07D8FD] h-40">
+          <div class="flex gap-5 justify-items-center">
+            <img
+              width="35"
+              height="35"
+              src="https://img.icons8.com/ios-filled/50/settings.png"
+              alt="settings"
+            />
+            <h5 class="text-3xl">UV Index</h5>
+          </div>
+          <div class="pt-4">
+            <h4 class="text-3xl">13.94 °C</h4>
+            <p>Extreme</p>
           </div>
         </div>
+
         <div>
           <img
             src="https://media.istockphoto.com/id/936342386/photo/yellow-umbrella-with-bright-sun-and-blue-sky.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=zgoDpVvGJ6fzOFLJsLIJqCDZXdN7JuW-HkRAVSYH2S8="
