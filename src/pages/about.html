@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Page</title>
+    <link rel="stylesheet" href="../output.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="font-serif">
+    <nav class="bg-gray-600">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo Section -->
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-20 w-20" src="../assets/img/logo.png" alt="Logo" />
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-3 flex items-baseline space-x-4">
+                <span class="text-white text-xl font-bold">Weather</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Section -->
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >HOME</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >BLOG</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >ABOUT</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >FAQ</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  class="inline-flex"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >HOME</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >BLOG</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >ABOUT</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >FAQ</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <h1 class="text-center text-4xl font-bold p-10">About Weather</h1>
+      <div class="grid sm:grid-cols-2">
+        <div class="p-10 justify-items-center">
+          <div class="bg-gray-100 shadow-lg p-10 sm:m-5">
+            <p class="text-lg">
+              Welcome to my Website Weather, your go-to destination for accurate
+              and up-to-date weather forecasts. Whether you're planning your
+              daily commute or a weekend getaway, we provide reliable weather
+              data to help you make informed decisions.
+            </p>
+          </div>
+        </div>
+        <div class="px-10 sm:px-0">
+          <img
+            src="https://www.newscaststudio.com/wp-content/uploads/2012/05/DSC05601.jpg"
+            jsaction=""
+            class="sFlh5c FyHeAf iPVvYb"
+            alt="Channel 3 upgrades weather center with Mystic - NewscastStudio"
+          />
+        </div>
+      </div>
+      <h2 class="text-center text-3xl font-bold p-10">Our Misson</h2>
+      <div class="grid sm:grid-cols-3 px-10">
+        <div class="grid grid-rows-3 sm:col-span-2">
+          <div class="sm:pe-10">
+            <div class="flex justify-between">
+              <h3 class="text-2xl font-bold my-3">
+                To Provide Accurate and Timely Weather Information
+              </h3>
+              <div class="bg-cyan-400 p-3 text-2xl font-bold rounded">1</div>
+            </div>
+            <p class="sm:pe-20 text-lg">
+              Our mission is to deliver reliable, up-to-date weather forecasts
+              that help individuals, businesses, and communities make informed
+              decisions, ensuring safety and preparedness.
+            </p>
+          </div>
+          <div class="sm:pe-10">
+            <div class="flex justify-between">
+              <h3 class="text-2xl font-bold my-3">
+                To Promote Weather Education and Awareness
+              </h3>
+              <div class="bg-cyan-400 p-3 text-2xl font-bold rounded">2</div>
+            </div>
+            <p class="sm:pe-20 text-lg">
+              We are dedicated to educating the public on weather patterns,
+              extreme events, and climate change, empowering people to
+              understand how weather impacts their daily lives and environment.
+            </p>
+          </div>
+          <div class="sm:pe-10">
+            <div class="flex justify-between">
+              <h3 class="text-2xl font-bold my-3">
+                To Enhance Weather Prediction Technology
+              </h3>
+              <div class="bg-cyan-400 p-3 text-2xl font-bold rounded">3</div>
+            </div>
+            <p class="sm:pe-20 text-lg">
+              Our mission is to push the boundaries of meteorological science by
+              advancing technology that improves the accuracy and reliability of
+              weather predictions, benefiting both local and global communities.
+            </p>
+          </div>
+        </div>
+        <div class="my-3 sm:my-0">
+          <img
+            src="https://media.istockphoto.com/id/512144122/photo/satellite-orbiting-earth.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=tC0b-yARA_texU7INUp1DykLskhJec6vFz4PRzr5Fc0="
+            class="sFlh5c FyHeAf iPVvYb sm:h-140 sm:object-cover"
+            alt="13,300+ Weather Satellite Stock Photos, Pictures &amp; Royalty-Free Images -  iStock | Weather satellite space, Weather satellite view, Weather satellite  in space"
+          />
+        </div>
+      </div>
+      <h2 class="text-center text-3xl font-bold p-10">Our Story</h2>
+      <div class="grid sm:grid-cols-2 px-10 sm:gap-10">
+        <div class="justify-items-center">
+          <img
+            class="attachment-post-thumbnail size-post-thumbnail wp-post-image ls-is-cached br-loaded h-52 w-full object-cover"
+            src="https://www.khmertimeskh.com/wp-content/uploads/2020/03/c26u0yts.jpg"
+            alt="weather centre"
+          />
+        </div>
+        <div class="flex justify-items-center items-center">
+          <p class="text-lg mt-5 sm:mt-0">
+            A sudden storm rolled in, darkening the skies and chilling the air.
+            The wind howled as trees swayed, while people rushed to find
+            shelter. Moments later, the rain poured down in sheets, transforming
+            the streets into rivers, reminding everyone of nature’s power.
+          </p>
+        </div>
+      </div>
+      <p class="px-10 text-lg sm:my-8">
+        Weather insights provide valuable information about atmospheric
+        conditions, helping us understand patterns, trends, and changes. By
+        analyzing data from various sources like satellites, radar, and weather
+        stations, we can predict upcoming weather events, monitor climate
+        shifts, and prepare for extreme conditions. These insights are essential
+        for agriculture, disaster management, and everyday planning, allowing
+        individuals, communities, and industries to make informed decisions and
+        reduce risks. Through continued advancements in technology, weather
+        forecasting and analysis are becoming increasingly accurate, offering
+        deeper understanding and more precise predictions.
+      </p>
+    </main>
+
+    <script>
+      // Toggle mobile menu
+      const btn = document.querySelector(".mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
