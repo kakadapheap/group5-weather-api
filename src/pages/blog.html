@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Navbar</title>
-    <link href="" rel="stylesheet" />
+    <link href="/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
   </head>
   <body>
     <nav class="bg-gray-600">
@@ -99,13 +103,211 @@
       </div>
     </nav>
 
-    <div class="bg-amber-500 max-w-full mx-auto">
-      <img class="object-cover" src="../assets/img/blog-1.jpg" alt="" />
+    <div class="bg-amber-500 max-w-full mx-auto p-6">
+      <img class="object-cover" src="../assets/img/hero.jpg" alt="" />
     </div>
 
-    <div class="text-center">
-      <h1>Weather Blog</h1>
+    <div class="text-center mb-8">
+      <h1 class="text-2xl font-bold">Weather Blog</h1>
     </div>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 p-6 gap-8 mx-auto"
+    >
+      <div class="flex flex-col items-center justify-center mx-auto px-6">
+        <img
+          src="../assets/img/b-4.webp"
+          alt="Image 1"
+          class="w-full h-auto rounded-lg mb-4"
+        />
+      </div>
+      <div
+        class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 p-6 gap-8 mx-auto"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/b-1.jpg"
+            alt="Image 2"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">Your text goes here</p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/b-2.webp"
+            alt="Image 3"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">Your text goes here</p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/sunset.jpg"
+            alt="Image 3"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">Your text goes here</p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/4.jpg"
+            alt="Image 4"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">Your text goes here</p>
+        </div>
+      </div>
+    </div>
+    <div class="ml-12 leading-snug px-12 py-12 space-y-12 pb-12 text-left">
+      <h2 class="text-2xl font-bold ml-12">
+        Top 5 Warm Weather Destinations to Visit in March
+      </h2>
+      <small class="text-2">On March 2, 2025 By Syed Kazmi</small>
+      <p class="text-3xl">
+        March is the perfect time to leave behind the cold and embrace sunny
+        skies, warm …
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2">
+      <div
+        class="bg-amber-500 flex justify-center items-center mx-auto px-4 mt-12"
+      >
+        <img
+          class="object-cover rounded-lg"
+          src="../assets/img/sunset.jpg"
+          alt="Weather blog main image"
+        />
+      </div>
+
+      <div class="p-12">
+        <div class="p-2">
+          <input
+            clas
+            type="text"
+            placeholder="Search..."
+            class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div class="text-black p-12 rounded-lg shadow-lg w-96 text-center">
+          <div id="weather-icon" class="text-6xl mb-2">🌤️</div>
+          <p id="condition" class="text-lg font-semibold">Partly Cloudy</p>
+          <p id="location" class="text-sm">Gloucester, United Kingdom</p>
+          <h1 id="temperature" class="text-5xl font-bold my-4">+7°C</h1>
+
+          <div class="flex justify-around mt-4">
+            <div>
+              <p class="text-sm">Thu</p>
+              <div class="text-2xl">🌧️</div>
+              <p id="temp-thu">+8°C</p>
+            </div>
+            <div>
+              <p class="text-sm">Fri</p>
+              <div class="text-2xl">🌤️</div>
+              <p id="temp-fri">+10°C</p>
+            </div>
+            <div>
+              <p class="text-sm">Sat</p>
+              <div class="text-2xl">☀️</div>
+              <p id="temp-sat">+9°C</p>
+            </div>
+          </div>
+          <a href="https://www.weatherapi.com/">
+            <p class="text-xs mt-4 text-blue-500">WeatherAPI.com</p></a
+          >
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", async function () {
+            const apiKey = "c010e72b3e50cca725e0b2559b3e4ffe"; // Replace with your WeatherAPI key
+            const location = "Gloucester";
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
+
+            try {
+              const response = await fetch(url);
+              const data = await response.json();
+
+              // Set main weather details
+              document.getElementById(
+                "location"
+              ).textContent = `${data.location.name}, ${data.location.country}`;
+              document.getElementById("condition").textContent =
+                data.current.condition.text;
+              document.getElementById(
+                "temperature"
+              ).textContent = `+${data.current.temp_c}°C`;
+
+              // Weather icons
+              const conditionIcon = data.current.condition.text.toLowerCase();
+              document.getElementById("weather-icon").textContent =
+                getWeatherIcon(conditionIcon);
+
+              // Set 3-day forecast
+              const forecast = data.forecast.forecastday;
+              document.getElementById(
+                "temp-thu"
+              ).textContent = `+${forecast[0].day.avgtemp_c}°C`;
+              document.getElementById(
+                "temp-fri"
+              ).textContent = `+${forecast[1].day.avgtemp_c}°C`;
+              document.getElementById(
+                "temp-sat"
+              ).textContent = `+${forecast[2].day.avgtemp_c}°C`;
+            } catch (error) {
+              console.error("Error fetching weather data:", error);
+            }
+          });
+
+          // Function to return weather icons based on conditions
+          function getWeatherIcon(condition) {
+            if (condition.includes("rain")) return "🌧️";
+            if (condition.includes("cloudy")) return "☁️";
+            if (condition.includes("clear") || condition.includes("sunny"))
+              return "☀️";
+            if (condition.includes("snow")) return "❄️";
+            return "🌤️"; // Default to partly cloudy
+          }
+        </script>
+      </div>
+    </div>
+    <footer class="bg-gray-800 text-white font-serif">
+      <div class="container mx-auto px-4 p-5">
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-8"
+        >
+          <!-- Box 1: Title, Text, and Button -->
+          <div class="flex flex-col items-center space-y-4">
+            <h3 class="text-xl font-bold">Stay In the Weather</h3>
+            <p class="text-gray-300 max-w-xl">
+              Stay updated on current weather conditions and forecasts with our
+              weather section. Whether it's sunshine, rain, or snow, we provide
+              accurate and timely information to help you plan your day. Check
+              back frequently for real-time updates and make informed decisions
+              based on the latest weather patterns.
+            </p>
+            <button
+              class="bg-[#07D8FD] hover:bg-black text-blue-900 font-semibold py-2 px-4 rounded transition duration-300"
+            >
+              Read More!
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Box 2: Logo and Title -->
+      <div class="bg-[#07D8FD]">
+        <div class="flex flex-row justify-center space-y-4 py-3 mt-5">
+          <img
+            src="../assets/img/logo.png"
+            alt="Logo"
+            class="w-25 h-25 object-contain"
+          />
+          <!-- Copyright -->
+          <div class="mt-8 text-center text-gray-900 text-lg">
+            &copy; 2025 Weather. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 <script>
