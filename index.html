@@ -1,26 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5-Day Weather Forecast</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="./src/output.css">
-  </head>
-  <body>
-    <h1>🌦️ 5-Day Weather Forecast</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class=" bg-[url(src/assets/img/sky.jpg)] bg-no-repeat w-full">
+  <nav class="bg-gray-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo Section -->
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img class="h-20 w-20" src="src/assets/img/logo.png" alt="Logo" />
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-3 flex items-baseline space-x-4">
+              <span class="text-white text-xl font-bold">Weather</span>
+            </div>
+          </div>
+        </div>
 
-    <div class="input-container">
-      <input type="text" id="cityInput" placeholder="Enter city name" />
-      <button
-        onclick="fetchWeather(document.getElementById('cityInput').value)"
-      >
-        Get Forecast
-      </button>
+        <!-- Menu Section -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >HOME</a
+            >
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >BLOG</a
+            >
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >ABOUT</a
+            >
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >FAQ</a
+            >
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button
+            class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                class="inline-flex"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div id="weather" class="weather-boxes">Loading...</div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+          >HOME</a
+        >
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+          >BLOG</a
+        >
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+          >ABOUT</a
+        >
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+          >FAQ</a
+        >
+      </div>
+    </div>
+  </nav>
 
-    <script src="index.js"></script>
-  </body>
+  <script>
+    // Toggle mobile menu
+    const btn = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script> 
+  <div class="flex items-center justify-center min-h-screen py-20">
+    <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-4">🌤 Weather Dashboard</h1>
+        
+        <!-- Current Weather -->
+        <div class="p-4 bg-blue-200 rounded-lg shadow-md text-center">
+            <h2 class="text-lg font-bold">Current Weather</h2>
+            <p id="city-name" class="text-xl font-semibold"></p>
+            <img id="weather-icon" class="mx-auto w-16 h-16">
+            <p id="temperature" class="text-lg"></p>
+            <p id="description" class="text-sm capitalize"></p>
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4" id="forecast-container">
+            <!-- Forecast will be inserted here -->
+        </div>
+
+        <!-- Air Quality -->
+        <div class="mt-6 p-4 bg-green-200 rounded-lg shadow-md text-center">
+            <h2 class="text-lg font-bold">Air Quality Index (AQI)</h2>
+            <p id="aqi" class="text-xl mt-2"></p>
+            <p id="pollutants" class="text-sm"></p>
+        </div>
+
+        <!-- UV Index -->
+        <div class="mt-6 p-4 bg-yellow-200 rounded-lg shadow-md text-center">
+            <h2 class="text-lg font-bold">UV Radiation Level</h2>
+            <p id="uv" class="text-xl mt-2"></p>
+        </div>
+
+        <!-- Severe Weather Alerts -->
+        <div id="alerts" class="mt-6 p-4 bg-red-200 rounded-lg shadow-md text-center">
+            <h2 class="text-lg font-bold">⚠ Severe Weather Alerts</h2>
+            <p id="alert-message" class="text-md mt-2"></p>
+        </div>
+    </div>
+  </div>
+
+    <script>
+        const apiKey = "9e456f4782fbc7010b22c8a4c4d60459";
+        const city = "Phnom Penh";
+        const lat = 11.5564;
+        const lon = 104.9282;
+
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+        const airQualityUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const uvIndexUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const alertsUrl = `https://api.openweathermap.org/data/2.5/alerts?q=${city}&appid=${apiKey}`;
+
+        async function fetchCurrentWeather() {
+            try {
+                const response = await fetch(currentWeatherUrl);
+                const data = await response.json();
+                document.getElementById("city-name").innerText = `📍 ${data.name}, ${data.sys.country}`;
+                document.getElementById("temperature").innerText = `🌡 ${data.main.temp}°C`;
+                document.getElementById("description").innerText = `☁ ${data.weather[0].description}`;
+                document.getElementById("weather-icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+            } catch (error) {
+                console.error("Error fetching current weather:", error);
+            }
+        }
+
+        async function fetchForecast() {
+            try {
+                const response = await fetch(forecastUrl);
+                const data = await response.json();
+                const forecast = processForecastData(data.list);
+                displayForecast(forecast);
+            } catch (error) {
+                console.error("Error fetching forecast:", error);
+            }
+        }
+
+        async function fetchAirQuality() {
+            try {
+                const response = await fetch(airQualityUrl);
+                const data = await response.json();
+                displayAirQuality(data);
+            } catch (error) {
+                console.error("Error fetching air quality:", error);
+            }
+        }
+
+        async function fetchUVIndex() {
+            try {
+                const response = await fetch(uvIndexUrl);
+                const data = await response.json();
+                document.getElementById("uv").innerText = `UV Index: ${data.value}`;
+            } catch (error) {
+                console.error("Error fetching UV index:", error);
+            }
+        }
+
+        async function fetchAlerts() {
+            try {
+                const response = await fetch(alertsUrl);
+                const data = await response.json();
+                if (data.alerts && data.alerts.length > 0) {
+                    document.getElementById("alert-message").innerText = data.alerts[0].description;
+                    document.getElementById("alerts").classList.remove("hidden");
+                }
+            } catch (error) {
+                console.error("Error fetching alerts:", error);
+            }
+        }
+
+        function processForecastData(list) {
+            const forecast = {};
+            list.forEach(item => {
+                const date = new Date(item.dt * 1000);
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+                if (!forecast[dayName]) {
+                    forecast[dayName] = {
+                        temp: item.main.temp,
+                        description: item.weather[0].description,
+                        icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`
+                    };
+                }
+            });
+            return forecast;
+        }
+
+        function displayForecast(forecast) {
+            const container = document.getElementById("forecast-container");
+            container.innerHTML = "";
+            Object.keys(forecast).forEach(day => {
+                const { temp, description, icon } = forecast[day];
+                const card = `
+                    <div class="p-4 bg-blue-200 rounded-lg shadow-md flex flex-col items-center">
+                        <h2 class="text-lg font-bold">${day}</h2>
+                        <img src="${icon}" alt="Weather Icon" class="w-16 h-16">
+                        <p class="text-lg">${temp}°C</p>
+                        <p class="text-sm capitalize">${description}</p>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        function displayAirQuality(data) {
+            const aqiLevels = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
+            const aqi = data.list[0].main.aqi;
+            document.getElementById("aqi").innerText = `AQI: ${aqi} (${aqiLevels[aqi - 1]})`;
+            document.getElementById("pollutants").innerText = `PM2.5: ${data.list[0].components.pm2_5}, CO: ${data.list[0].components.co}`;
+        }
+
+        fetchCurrentWeather();
+        fetchForecast();
+        fetchAirQuality();
+        fetchUVIndex();
+        fetchAlerts();
+    </script>
+        <footer class= " bg-gray-800 text-white font-serif">
+          <div class="container mx-auto px-4 p-5">
+              <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                  <!-- Box 1: Title, Text, and Button -->
+                  <div class="flex flex-col items-center space-y-4">
+                      <h3 class="text-xl font-bold">Stay In the Weather</h3>
+                      <p class="text-gray-300 max-w-xl">
+                          Stay updated on current weather conditions and forecasts with our weather section.
+                           Whether it's sunshine, rain, or snow, we provide accurate and timely information 
+                           to help you plan your day. Check back frequently for real-time updates and make 
+                           informed decisions based on the latest weather patterns.
+                      </p>
+                      <button class="bg-[#07D8FD]  hover:bg-black text-blue-900 font-semibold py-2 px-4 rounded transition duration-300">
+                          Read More!
+                      </button>
+                  </div>
+              </div>
+          </div>
+           <!-- Box 2: Logo and Title -->
+            <div class="bg-[#07D8FD] ">
+              <div class="flex flex-row justify-center space-y-4  py-3 mt-5">
+                  <img 
+                      src="src/assets/img/logo.png" 
+                      alt="Logo" 
+                      class="w-14 h-14 object-contain"
+                  >
+                  <!-- Copyright -->
+                  <div class="mt-8 text-center text-gray-900 text-lg">
+                      &copy; 2025 Weather. All rights reserved.
+                  </div>
+              </div>
+          </div>
+      </footer>
+</body>
 </html>
