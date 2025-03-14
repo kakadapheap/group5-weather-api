@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex items-center justify-center min-h-screen py-20">
+      <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-4">🌤 Weather Dashboard</h1>
+
+        <!-- Research Button -->
+        <div class="text-center mb-4">
+          <button
+            id="research-button"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Research
+          </button>
+        </div>
+
+        <!-- Input for Country -->
+        <div class="text-center mb-4">
+          <input
+            type="text"
+            id="country-input"
+            placeholder="Enter country"
+            class="p-2 border border-gray-300 rounded"
+          />
+        </div>
+
+        <!-- Current Weather -->
+        <div class="p-4 bg-blue-200 rounded-lg shadow-md text-center">
+          <h2 class="text-lg font-bold">Current Weather</h2>
+          <p id="city-name" class="text-xl font-semibold"></p>
+          <img id="weather-icon" class="mx-auto w-16 h-16" />
+          <p id="temperature" class="text-lg"></p>
+          <p id="description" class="text-sm capitalize"></p>
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div
+          class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+          id="forecast-container"
+        >
+          <!-- Forecast will be inserted here -->
+        </div>
+
+        <!-- Air Quality -->
+        <div class="mt-6 p-4 bg-green-200 rounded-lg shadow-md text-center">
+          <h2 class="text-lg font-bold">Air Quality Index (AQI)</h2>
+          <p id="aqi" class="text-xl mt-2"></p>
+          <p id="pollutants" class="text-sm"></p>
+        </div>
+
+        <!-- UV Index -->
+        <div class="mt-6 p-4 bg-yellow-200 rounded-lg shadow-md text-center">
+          <h2 class="text-lg font-bold">UV Radiation Level</h2>
+          <p id="uv" class="text-xl mt-2"></p>
+        </div>
+
+        <!-- Severe Weather Alerts -->
+        <div
+          id="alerts"
+          class="mt-6 p-4 bg-red-200 rounded-lg shadow-md text-center"
+        >
+          <h2 class="text-lg font-bold">⚠ Severe Weather Alerts</h2>
+          <p id="alert-message" class="text-md mt-2"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  document
+    .getElementById("research-button")
+    .addEventListener("click", async function () {
+      const country = document.getElementById("country-input").value;
+      if (country) {
+        const apiKey = "c010e72b3e50cca725e0b2559b3e4ffe";
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&appid=${apiKey}`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${country}&units=metric&appid=${apiKey}`;
+        const airQualityUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const uvIndexUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const alertsUrl = `https://api.openweathermap.org/data/2.5/alerts?q=${country}&appid=${apiKey}`;
+
+        await fetchCurrentWeather(currentWeatherUrl);
+        await fetchForecast(forecastUrl);
+        await fetchAirQuality(airQualityUrl);
+        await fetchUVIndex(uvIndexUrl);
+        await fetchAlerts(alertsUrl);
+      } else {
+        alert("Please enter a valid country name.");
+      }
+    });
+
+  async function fetchCurrentWeather(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      document.getElementById(
+        "city-name"
+      ).innerText = `📍 ${data.name}, ${data.sys.country}`;
+      document.getElementById(
+        "temperature"
+      ).innerText = `🌡 ${data.main.temp}°C`;
+      document.getElementById(
+        "description"
+      ).innerText = `☁ ${data.weather[0].description}`;
+      document.getElementById(
+        "weather-icon"
+      ).src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    } catch (error) {
+      console.error("Error fetching current weather:", error);
+    }
+  }
+
+  async function fetchForecast(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const forecast = processForecastData(data.list);
+      displayForecast(forecast);
+    } catch (error) {
+      console.error("Error fetching forecast:", error);
+    }
+  }
+
+  async function fetchAirQuality(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      displayAirQuality(data);
+    } catch (error) {
+      console.error("Error fetching air quality:", error);
+    }
+  }
+
+  async function fetchUVIndex(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      document.getElementById("uv").innerText = `UV Index: ${data.value}`;
+    } catch (error) {
+      console.error("Error fetching UV index:", error);
+    }
+  }
+
+  async function fetchAlerts(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.alerts && data.alerts.length > 0) {
+        document.getElementById("alert-message").innerText =
+          data.alerts[0].description;
+        document.getElementById("alerts").classList.remove("hidden");
+      }
+    } catch (error) {
+      console.error("Error fetching alerts:", error);
+    }
+  }
+
+  function processForecastData(list) {
+    const forecast = {};
+    list.forEach((item) => {
+      const date = new Date(item.dt * 1000);
+      const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+      if (!forecast[dayName]) {
+        forecast[dayName] = {
+          temp: item.main.temp,
+          description: item.weather[0].description,
+          icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
+        };
+      }
+    });
+    return forecast;
+  }
+
+  function displayForecast(forecast) {
+    const container = document.getElementById("forecast-container");
+    container.innerHTML = "";
+    Object.keys(forecast).forEach((day) => {
+      const { temp, description, icon } = forecast[day];
+      const card = `
+      <div class="p-4 bg-blue-200 rounded-lg shadow-md flex flex-col items-center">
+        <h2 class="text-lg font-bold">${day}</h2>
+        <img src="${icon}" alt="Weather Icon" class="w-16 h-16">
+        <p class="text-lg">${temp}°C</p>
+        <p class="text-sm capitalize">${description}</p>
+      </div>
+    `;
+      container.innerHTML += card;
+    });
+  }
+
+  function displayAirQuality(data) {
+    const aqiLevels = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
+    const aqi = data.list[0].main.aqi;
+    document.getElementById("aqi").innerText = `AQI: ${aqi} (${
+      aqiLevels[aqi - 1]
+    })`;
+    document.getElementById(
+      "pollutants"
+    ).innerText = `PM2.5: ${data.list[0].components.pm2_5}, CO: ${data.list[0].components.co}`;
+  }
+</script>

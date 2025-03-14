@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page</title>
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       html,
@@ -131,10 +131,19 @@
         menu.classList.toggle("hidden");
       });
     </script>
+
     <div class="flex items-center justify-center min-h-screen py-20">
       <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold text-center mb-4">🌤 Weather Dashboard</h1>
-
+        <!-- research -->
+        <div class="input-container">
+          <input type="text" id="cityInput" placeholder="Enter city name" />
+          <button
+            onclick="fetchWeather(document.getElementById('cityInput').value)"
+          >
+            Get Forecast
+          </button>
+        </div>
         <!-- Current Weather -->
         <div class="p-4 bg-blue-200 rounded-lg shadow-md text-center">
           <h2 class="text-lg font-bold">Current Weather</h2>
