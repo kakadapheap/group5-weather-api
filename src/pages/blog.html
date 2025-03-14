@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
-    <link href="/output.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
+    <link href="../output.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="bg-gray-600">
@@ -103,6 +99,16 @@
       </div>
     </nav>
 
+    <script>
+      // Toggle mobile menu
+      const btn = document.querySelector(".mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+
     <div class="bg-amber-500 max-w-full mx-auto p-6">
       <img class="object-cover" src="../assets/img/hero.jpg" alt="" />
     </div>
@@ -191,7 +197,6 @@
       <div class="p-12">
         <div class="p-2">
           <input
-            clas
             type="text"
             placeholder="Search..."
             class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -318,12 +323,3 @@
     </footer>
   </body>
 </html>
-<script>
-  // Toggle mobile menu
-  const btn = document.querySelector(".mobile-menu-button");
-  const menu = document.querySelector(".mobile-menu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
