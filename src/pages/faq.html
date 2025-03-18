@@ -6,38 +6,48 @@
     <title>FAQ PAGE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../output.css" />
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-          const elements = document.querySelectorAll(".reveal");
+        const elements = document.querySelectorAll(".reveal");
 
-          const revealOnScroll = () => {
-              elements.forEach((el, index) => {
-                  const rect = el.getBoundingClientRect();
-                  // Check if element is in view (visible in the viewport)
-                  if (rect.top < window.innerHeight - 100 && !el.classList.contains('revealed')) {
-                      setTimeout(() => {
-                          el.classList.remove("opacity-0", "translate-y-10");
-                          el.classList.add("opacity-100", "translate-y-0");
-                          el.classList.add("revealed"); // Add class to prevent re-animation
-                      }, index * 300); // Delay each element by 300ms
-                  }
-              });
-          };
+        const revealOnScroll = () => {
+          elements.forEach((el, index) => {
+            const rect = el.getBoundingClientRect();
+            // Check if element is in view (visible in the viewport)
+            if (
+              rect.top < window.innerHeight - 100 &&
+              !el.classList.contains("revealed")
+            ) {
+              setTimeout(() => {
+                el.classList.remove("opacity-0", "translate-y-10");
+                el.classList.add("opacity-100", "translate-y-0");
+                el.classList.add("revealed"); // Add class to prevent re-animation
+              }, index * 300); // Delay each element by 300ms
+            }
+          });
+        };
 
-          window.addEventListener("scroll", revealOnScroll);
-          revealOnScroll(); // Run on page load
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll(); // Run on page load
       });
-  </script>
+    </script>
   </head>
   <body>
-    <nav class="bg-gray-600 ">
+    <nav class="bg-gray-600">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <!-- Logo Section -->
           <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <img class="h-20 w-20" src="../assets/img/logo.png" alt="Logo" />
-            </div>
+            <a href="/index.html">
+              <div class="flex-shrink-0">
+                <img
+                  class="h-20 w-20"
+                  src="../assets/img/logo.png"
+                  alt="Logo"
+                />
+              </div>
+            </a>
             <div class="hidden md:block">
               <div class="ml-3 flex items-baseline space-x-4">
                 <span class="text-white text-xl font-bold">Weather</span>
@@ -54,20 +64,20 @@
                 >HOME</a
               >
               <a
-                href="../pages/blog.html"
+                href="./blog.html"
                 class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
                 >BLOG</a
               >
               <a
-                href="../pages/about.html"
+                href="./about.html"
                 class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
                 >ABOUT</a
               >
               <a
-              href="../pages/map.html"
-              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
-              >MAP</a
-            >
+                href="./map.html"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >MAP</a
+              >
               <a
                 href="#"
                 class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
@@ -78,7 +88,7 @@
 
           <!-- Mobile menu button -->
           <div class="md:hidden flex items-center">
-            <button
+            <div
               class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
             >
               <svg
@@ -95,7 +105,7 @@
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-            </button>
+            </div>
           </div>
         </div>
       </div>
@@ -104,19 +114,24 @@
       <div class="mobile-menu hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
-            href="#"
+            href="/index.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >HOME</a
           >
           <a
-            href="#"
+            href="./blog.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >BLOG</a
           >
           <a
-            href="#"
+            href="./about.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >ABOUT</a
+          >
+          <a
+            href="./map.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+            >MAP</a
           >
           <a
             href="#"
@@ -128,138 +143,210 @@
     </nav>
 
     <div class="relative w-full h-[500px] overflow-hidden">
-      <div class="flex w-full transition-transform duration-500 ease-in-out" id="slider">
-          <img src="../assets/img/1.webp" class="w-full h-[500px] object-cover flex-shrink-0">
-          <img src="../assets/img/2.jpg" class="w-full h-[500px] object-cover flex-shrink-0">
-          <img src="../assets/img/3.jpg" class="w-full h-[500px] object-cover flex-shrink-0">
-          <img src="../assets/img/4.jpg" class="w-full h-[500px] object-cover flex-shrink-0">
+      <div
+        class="flex w-full transition-transform duration-500 ease-in-out"
+        id="slider"
+      >
+        <img
+          src="../assets/img/1.webp"
+          class="w-full h-[500px] object-cover flex-shrink-0"
+          alt="hero scroll"
+        />
+        <img
+          src="../assets/img/2.jpg"
+          class="w-full h-[500px] object-cover flex-shrink-0"
+          alt="hero scroll"
+        />
+        <img
+          src="../assets/img/3.jpg"
+          class="w-full h-[500px] object-cover flex-shrink-0"
+          alt="hero scroll"
+        />
+        <img
+          src="../assets/img/4.jpg"
+          class="w-full h-[500px] object-cover flex-shrink-0"
+          alt="hero scroll"
+        />
       </div>
-  </div>
+    </div>
 
-  <script>
+    <script>
       let index = 0;
       const slides = document.getElementById("slider");
       const totalSlides = document.querySelectorAll("#slider img").length;
 
       function nextSlide() {
-          index = (index + 1) % totalSlides;
-          slides.style.transform = `translateX(-${index * 100}%)`;
+        index = (index + 1) % totalSlides;
+        slides.style.transform = `translateX(-${index * 100}%)`;
       }
 
       setInterval(nextSlide, 3000); // Auto change slide every 3 seconds
-  </script>
+    </script>
     <!-- backkgroundimg -->
-    <div class="underline text-[30px] font-bold text-blue-500 text-center py-10 ">
+    <div
+      class="underline text-[30px] font-bold text-blue-500 text-center py-10"
+    >
       Frequently Asked Questions
-  </div>
+    </div>
     <!-- FAQ Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal opacity-0 translate-y-10 transition-all duration-500">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal opacity-0 translate-y-10 transition-all duration-500"
+    >
       <div class="">
-        <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200 ">
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4">
+        <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
-              <strong>Q:  What is the weather forecast for today?</strong>
+              <strong>Q: What is the weather forecast for today?</strong>
             </p>
             <p>
-              A: You can find the current weather forecast by visiting the homepage of 
-              our website. We provide hourly updates, detailed temperature, humidity, 
-              and wind conditions.
-
-
+              A: You can find the current weather forecast by visiting the
+              homepage of our website. We provide hourly updates, detailed
+              temperature, humidity, and wind conditions.
             </p>
           </div>
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
               <strong>Q: How accurate is the weather forecast?</strong>
             </p>
             <p>
-              A: Our forecasts are based on data from trusted sources,
-               including meteorological agencies and advanced weather models. 
-               We aim for the highest level of accuracy, but please note that
-                weather can change unexpectedly.
+              A: Our forecasts are based on data from trusted sources, including
+              meteorological agencies and advanced weather models. We aim for
+              the highest level of accuracy, but please note that weather can
+              change unexpectedly.
             </p>
           </div>
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
-              <strong>Q: Do you offer weather forecasts for multiple locations?
+              <strong
+                >Q: Do you offer weather forecasts for multiple locations?
               </strong>
             </p>
             <p>
-              A:Yes, our service allows you to check weather forecasts for any location
-               worldwide. Simply enter your city or area name in the search bar to get
-                the current and forecasted weather.
+              A:Yes, our service allows you to check weather forecasts for any
+              location worldwide. Simply enter your city or area name in the
+              search bar to get the current and forecasted weather.
             </p>
           </div>
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
-              <strong>Q: Why is there a difference in temperature between my location and the forecasted one?</strong>
+              <strong
+                >Q: Why is there a difference in temperature between my location
+                and the forecasted one?</strong
+              >
             </p>
             <p>
-              A: Temperature variations can happen due to factors like microclimates,
-               elevation, or local weather phenomena. We provide general forecasts for 
-               your area, but it's always a good idea to check your specific location for
-                more precise updates.
-
-
+              A: Temperature variations can happen due to factors like
+              microclimates, elevation, or local weather phenomena. We provide
+              general forecasts for your area, but it's always a good idea to
+              check your specific location for more precise updates.
             </p>
           </div>
 
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
               <strong>Q: How often is the weather forecast updated?</strong>
             </p>
             <p>
-              A: We update the weather forecast regularly throughout the day, 
+              A: We update the weather forecast regularly throughout the day,
               typically every hour for real-time updates. Major weather changes
-               are reflected as soon as new data becomes available.
-
-
+              are reflected as soon as new data becomes available.
             </p>
           </div>
 
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4 ">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
-              <strong>Q: Can I get a weather forecast for the next week or month?</strong>
+              <strong
+                >Q: Can I get a weather forecast for the next week or
+                month?</strong
+              >
             </p>
             <p>
-              A: Yes, we offer forecasts for up to 7 days. Longer-term forecasts 
-              (like monthly predictions) are also available, but they may not be as 
-              accurate as short-term forecasts.
-            </p>
-          </div>
-
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4 ">
-            <p>
-              <strong>Q:What should I do if the weather app isn’t working?</strong>
-            </p>
-            <p>
-              A: If you're experiencing issues, try refreshing the page or restarting the app. 
-              If the issue persists, check your internet connection. If you need further assistance, 
-              feel free to contact our support team.
-
-
+              A: Yes, we offer forecasts for up to 7 days. Longer-term forecasts
+              (like monthly predictions) are also available, but they may not be
+              as accurate as short-term forecasts.
             </p>
           </div>
 
-
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 text-xl text-gray-800 mb-4 ">
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
+            <p>
+              <strong
+                >Q:What should I do if the weather app isn’t working?</strong
+              >
+            </p>
+            <p>
+              A: If you're experiencing issues, try refreshing the page or
+              restarting the app. If the issue persists, check your internet
+              connection. If you need further assistance, feel free to contact
+              our support team.
+            </p>
+          </div>
+          <div
+            class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 reveal opacity-0 translate-y-10 transition-all duration-500 mb-4"
+          >
             <p>
               <strong>Q: What are weather warnings and alerts?</strong>
             </p>
             <p>
               A: Weather warnings and alerts are issued when extreme weather
-               conditions like storms, heavy rain, or snow are expected. You can
-                stay updated by subscribing to our weather alerts service.
-
+              conditions like storms, heavy rain, or snow are expected. You can
+              stay updated by subscribing to our weather alerts service.
             </p>
           </div>
-
-
-
-        
-          
-
-
+        </div>
+      </div>
+    </div>
+    <footer class="bg-gray-800 text-white font-serif">
+      <div class="container mx-auto px-4 p-5">
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-8"
+        >
+          <!-- Box 1: Title, Text, and Button -->
+          <div class="flex flex-col items-center space-y-4">
+            <h3 class="text-xl font-bold">Stay In the Weather</h3>
+            <p class="text-gray-300 max-w-xl">
+              Stay updated on current weather conditions and forecasts with our
+              weather section. Whether it's sunshine, rain, or snow, we provide
+              accurate and timely information to help you plan your day. Check
+              back frequently for real-time updates and make informed decisions
+              based on the latest weather patterns.
+            </p>
+            <button
+              class="bg-[#07D8FD] hover:bg-black text-blue-900 font-semibold py-2 px-4 rounded transition duration-300"
+            >
+              Read More!
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Box 2: Logo and Title -->
+      <div class="bg-[#07D8FD]">
+        <div class="flex flex-row justify-center space-y-4 py-3 mt-5">
+          <img
+            src="../assets/img/logo.png"
+            alt="Logo"
+            class="w-25 h-25 object-contain"
+          />
+          <!-- Copyright -->
+          <div class="mt-8 text-center text-gray-900 text-lg">
+            &copy; 2025 Weather. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
     <script>
       // Toggle mobile menu
       const btn = document.querySelector(".mobile-menu-button");

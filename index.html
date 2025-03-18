@@ -26,13 +26,15 @@
         <div class="flex items-center justify-between h-16">
           <!-- Logo Section -->
           <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <img
-                src="src/assets/img/logo.png"
-                alt="Logo"
-                class="w-14 h-14 object-contain"
-              />
-            </div>
+            <a href="#">
+              <div class="flex-shrink-0">
+                <img
+                  src="src/assets/img/logo.png"
+                  alt="Logo"
+                  class="w-14 h-14 object-contain"
+                />
+              </div>
+            </a>
             <div class="hidden md:block">
               <div class="ml-3 flex items-baseline space-x-4">
                 <span class="text-white text-xl font-bold">Weather</span>
@@ -73,7 +75,7 @@
 
           <!-- Mobile menu button -->
           <div class="md:hidden flex items-center">
-            <button
+            <div
               class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
             >
               <svg
@@ -90,7 +92,7 @@
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-            </button>
+            </div>
           </div>
         </div>
       </div>
@@ -104,17 +106,22 @@
             >HOME</a
           >
           <a
-            href="#"
+            href="./src/pages/blog.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >BLOG</a
           >
           <a
-            href="#"
+            href="./src/pages/about.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >ABOUT</a
           >
           <a
-            href="#"
+            href="./src/pages/map.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >MAP</a
+          >
+          <a
+            href="./src/pages/faq.html"
             class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
             >FAQ</a
           >
@@ -141,7 +148,11 @@
         <div class="p-4 bg-blue-200 rounded-lg shadow-md text-center">
           <h2 class="text-lg font-bold">Current Weather</h2>
           <p id="city-name" class="text-xl font-semibold"></p>
-          <img id="weather-icon" class="mx-auto w-16 h-16" />
+          <img
+            id="weather-icon"
+            class="mx-auto w-16 h-16"
+            alt="current weather"
+          />
           <p id="temperature" class="text-lg"></p>
           <p id="description" class="text-sm capitalize"></p>
         </div>
