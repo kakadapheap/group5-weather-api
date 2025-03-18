@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
-    <link href="../output.css" rel="stylesheet" />
+    <!-- <link href="../output.css" rel="stylesheet" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
   </head>
   <body>
     <nav class="bg-gray-600">
@@ -109,17 +111,25 @@
       });
     </script>
 
-    <div class="bg-amber-500 max-w-full mx-auto p-6">
-      <img class="object-cover" src="../assets/img/hero.jpg" alt="" />
+<div class="bg-amber-500 max-w-full mx-auto p-0 flex justify-center">
+  <div class="w-full max-w-[1285px] aspect-video">
+    <iframe 
+      class="w-full h-full"
+      src="https://www.youtube.com/embed/pdt6eZAB7eU" 
+      title="Lightning strike Background effect video 4k free" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+    <div class="text-center mt-7">
+      <h1 class="text-4xl font-bold">Weather Blog</h1>
     </div>
 
-    <div class="text-center mb-8">
-      <h1 class="text-2xl font-bold">Weather Blog</h1>
-    </div>
-
-    <div
-      class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 p-6 gap-8 mx-auto"
-    >
+    <!-- <div class="flex p-6 gap-8 mx-auto">
       <div class="flex flex-col items-center justify-center mx-auto px-6">
         <img
           src="../assets/img/b-4.webp"
@@ -127,9 +137,7 @@
           class="w-full h-auto rounded-lg mb-4"
         />
       </div>
-      <div
-        class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 p-6 gap-8 mx-auto"
-      >
+      <div class="flex p-6 gap-8 mx-auto">
         <div class="flex flex-col items-center justify-center">
           <img
             src="../assets/img/b-1.jpg"
@@ -192,9 +200,25 @@
           src="../assets/img/sunset.jpg"
           alt="Weather blog main image"
         />
+      </div> -->
+      <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+       <div class="mx-auto">   
+             <img src="../assets/img/1.webp" alt="Image 1" class="w-full mx-auto px-2">
+       </div>
+      <div class="grid grid-cols-2 gap-2 mx-auto sm:grid-cols-1 md:grid-cols-2">
+           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
+           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
+           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
+           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
+          </div>
+        
       </div>
-
-      <div class="p-12">
+      
+<div class="grid grid-cols-2">
+  <div class="p-6 mt-10">
+    <img src="../assets/img/1.webp" alt="">
+  </div>
+      <div class="p-12 mb-36 mx-auto">
         <div class="p-2">
           <input
             type="text"
@@ -202,7 +226,7 @@
             class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div class="text-black p-12 rounded-lg shadow-lg w-96 text-center">
+        <div class="text-black p-12 rounded-lg shadow-lg w-96 text-center mx-auto">
           <div id="weather-icon" class="text-6xl mb-2">🌤️</div>
           <p id="condition" class="text-lg font-semibold">Partly Cloudy</p>
           <p id="location" class="text-sm">Gloucester, United Kingdom</p>
@@ -229,7 +253,7 @@
             <p class="text-xs mt-4 text-blue-500">WeatherAPI.com</p></a
           >
         </div>
-
+      </div>
         <script>
           document.addEventListener("DOMContentLoaded", async function () {
             const apiKey = "c010e72b3e50cca725e0b2559b3e4ffe"; // Replace with your WeatherAPI key
