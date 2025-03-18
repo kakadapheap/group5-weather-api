@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
-    <!-- <link href="../output.css" rel="stylesheet" /> -->
+    <link href="../output.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 
   </head>
@@ -42,6 +42,11 @@
                 class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
                 >ABOUT</a
               >
+              <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >MAP</a
+            >
               <a
                 href="#"
                 class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
@@ -201,59 +206,86 @@
           alt="Weather blog main image"
         />
       </div> -->
-      <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-       <div class="mx-auto">   
-             <img src="../assets/img/1.webp" alt="Image 1" class="w-full mx-auto px-2">
-       </div>
-      <div class="grid grid-cols-2 gap-2 mx-auto sm:grid-cols-1 md:grid-cols-2">
-           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
-           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
-           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
-           <img src="../assets/img/1.webp" alt="Image 2" class="w-60">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 px-4">
+  
+        <!-- Main Image Section -->
+        <div class="flex justify-center">
+          <img src="../assets/img/1.webp" alt="Image 1" class="max-w-full h-auto rounded-lg shadow-lg">
+        </div>
+      
+        <!-- Grid Section with Text and Images -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <div class="text-center">
+            <img src="../assets/img/1.jpg" alt="Image 2" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">The Formation and Beauty <br> of Snowflakes</p>
           </div>
-        
+      
+          <div class="text-center">
+            <img src="../assets/img/2.jpg" alt="Image 3" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">From Hype to Hope: The <br> Role of Climate-Smart.</p>
+          </div>
+      
+          <div class="text-center">
+            <img src="../assets/img/blog.jpg" alt="Image 4" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">Experience Earth’s Wonders: <br> Top 7 Unique Weather Events</p>
+          </div>
+      
+          <div class="text-center">
+            <img src="../assets/img/blog-4.jpg" alt="Image 5" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">Urban Microclimates: How <br> Cities Create Their Own Weather</p>
+          </div>
+      
+        </div>
+      
       </div>
       
-<div class="grid grid-cols-2">
-  <div class="p-6 mt-10">
-    <img src="../assets/img/1.webp" alt="">
-  </div>
-      <div class="p-12 mb-36 mx-auto">
-        <div class="p-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="p-6 mt-10 flex justify-center">
+          <img src="../assets/img/1.webp" alt="Weather image" class="max-w-full h-auto rounded-lg">
         </div>
-        <div class="text-black p-12 rounded-lg shadow-lg w-96 text-center mx-auto">
-          <div id="weather-icon" class="text-6xl mb-2">🌤️</div>
-          <p id="condition" class="text-lg font-semibold">Partly Cloudy</p>
-          <p id="location" class="text-sm">Gloucester, United Kingdom</p>
-          <h1 id="temperature" class="text-5xl font-bold my-4">+7°C</h1>
-
-          <div class="flex justify-around mt-4">
-            <div>
-              <p class="text-sm">Thu</p>
-              <div class="text-2xl">🌧️</div>
-              <p id="temp-thu">+8°C</p>
-            </div>
-            <div>
-              <p class="text-sm">Fri</p>
-              <div class="text-2xl">🌤️</div>
-              <p id="temp-fri">+10°C</p>
-            </div>
-            <div>
-              <p class="text-sm">Sat</p>
-              <div class="text-2xl">☀️</div>
-              <p id="temp-sat">+9°C</p>
-            </div>
+      
+        <div class="p-6 md:p-12 mx-auto w-full ">
+          <div class="p-2 mx-auto">
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full max-w-sm md:max-w-md px-6 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 "
+            />
           </div>
-          <a href="https://www.weatherapi.com/">
-            <p class="text-xs mt-4 text-blue-500">WeatherAPI.com</p></a
-          >
+      
+          <div class="text-black p-6 md:p-12 rounded-lg shadow-lg w-full max-w-sm md:max-w-md text-center mx-auto">
+            <div id="weather-icon" class="text-6xl mb-2">🌤️</div>
+            <p id="condition" class="text-lg font-semibold">Partly Cloudy</p>
+            <p id="location" class="text-sm">Gloucester, United Kingdom</p>
+            <h1 id="temperature" class="text-5xl font-bold my-4">+7°C</h1>
+      
+            <div class="flex justify-around mt-4">
+              <div>
+                <p class="text-sm">Thu</p>
+                <div class="text-2xl">🌧️</div>
+                <p id="temp-thu">+8°C</p>
+              </div>
+              <div>
+                <p class="text-sm">Fri</p>
+                <div class="text-2xl">🌤️</div>
+                <p id="temp-fri">+10°C</p>
+              </div>
+              <div>
+                <p class="text-sm">Sat</p>
+                <div class="text-2xl">☀️</div>
+                <p id="temp-sat">+9°C</p>
+              </div>
+            </div>
+      
+            <a href="https://www.weatherapi.com/">
+              <p class="text-xs mt-4 text-blue-500">WeatherAPI.com</p>
+            </a>
+          </div>
         </div>
       </div>
+      
         <script>
           document.addEventListener("DOMContentLoaded", async function () {
             const apiKey = "c010e72b3e50cca725e0b2559b3e4ffe"; // Replace with your WeatherAPI key
