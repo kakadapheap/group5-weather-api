@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link href="../output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body>
+    <nav class="bg-gray-600">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo Section -->
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-20 w-20" src="../assets/img/logo.png" alt="Logo" />
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-3 flex items-baseline space-x-4">
+                <span class="text-white text-xl font-bold">Weather</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Section -->
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >HOME</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >BLOG</a
+              >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >ABOUT</a
+              >
+              <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+              >MAP</a
+            >
+              <a
+                href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-lg font-bold"
+                >FAQ</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  class="inline-flex"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >HOME</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >BLOG</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >ABOUT</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-bold"
+            >FAQ</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      // Toggle mobile menu
+      const btn = document.querySelector(".mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+
+<div class="bg-amber-500 max-w-full mx-auto p-0 flex justify-center">
+  <div class="w-full max-w-[1285px] aspect-video">
+    <iframe 
+      class="w-full h-full"
+      src="https://www.youtube.com/embed/pdt6eZAB7eU" 
+      title="Lightning strike Background effect video 4k free" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+    <div class="text-center mt-7">
+      <h1 class="text-4xl font-bold">Weather Blog</h1>
+    </div>
+
+    <!-- <div class="flex p-6 gap-8 mx-auto">
+      <div class="flex flex-col items-center justify-center mx-auto px-6">
+        <img
+          src="../assets/img/b-4.webp"
+          alt="Image 1"
+          class="w-full h-auto rounded-lg mb-4"
+        />
+      </div>
+      <div class="flex p-6 gap-8 mx-auto">
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/b-1.jpg"
+            alt="Image 2"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">
+            The Formation and Beauty of Snowflakes
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/b-2.webp"
+            alt="Image 3"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">
+            From Hype to Hope: The Role of Climate-Smart Agriculture.
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/sunset.jpg"
+            alt="Image 3"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">
+            Experience Earth's Wonders: Top 7 Unique Weather Events and Where .
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="../assets/img/4.jpg"
+            alt="Image 4"
+            class="w-full h-auto rounded-lg mb-4"
+          />
+          <p class="text-center text-lg">
+            Urban Microclimates: How Cities Create Their Own Weather
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="ml-12 leading-snug px-12 py-12 space-y-12 pb-12 text-left">
+      <h2 class="text-2xl font-bold ml-12">
+        Top 5 Warm Weather Destinations to Visit in March
+      </h2>
+      <small class="text-2">On March 2, 2025 By Syed Kazmi</small>
+      <p class="text-3xl">
+        March is the perfect time to leave behind the cold and embrace sunny
+        skies, warm …
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2">
+      <div
+        class="bg-amber-500 flex justify-center items-center mx-auto px-4 mt-12"
+      >
+        <img
+          class="object-cover rounded-lg"
+          src="../assets/img/sunset.jpg"
+          alt="Weather blog main image"
+        />
+      </div> -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 px-4">
+  
+        <!-- Main Image Section -->
+        <div class="flex justify-center">
+          <img src="../assets/img/1.webp" alt="Image 1" class="max-w-full h-auto rounded-lg shadow-lg">
+        </div>
+      
+        <!-- Grid Section with Text and Images -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <div class="text-center">
+            <img src="../assets/img/blog-1.jpg" alt="Image 2" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">The Formation and Beauty <br> of Snowflakes</p>
+          </div>
+      
+          <div class="text-center">
+            <img src="../assets/img//blog-2.jpg" alt="Image 3" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">From Hype to Hope: The <br> Role of Climate-Smart.</p>
+          </div>
+      
+          <div class="text-center">
+            <img src="../assets/img/blog-3.jpg" alt="Image 4" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">Experience Earth’s Wonders: <br> Top 7 Unique Weather Events</p>
+          </div>
+      
+          <div class="text-center">
+            <img src="../assets/img/blog-4.jpg" alt="Image 5" class="w-60 mx-auto rounded-lg shadow-md">
+            <p class="mt-4 text-gray-700 font-medium">Urban Microclimates: How <br> Cities Create Their Own Weather</p>
+          </div>
+      
+        </div>
+      
+      </div>
+      
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="p-6 mt-10 flex justify-center">
+          <img src="../assets/img/1.webp" alt="Weather image" class="max-w-full h-auto rounded-lg">
+        </div>
+      
+        <div class="p-6 md:p-12 mx-auto w-full ">
+          <div class="p-2 mx-auto">
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full max-w-sm md:max-w-md px-6 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 "
+            />
+          </div>
+      
+          <div class="text-black p-6 md:p-12 rounded-lg shadow-lg w-full max-w-sm md:max-w-md text-center mx-auto">
+            <div id="weather-icon" class="text-6xl mb-2">🌤️</div>
+            <p id="condition" class="text-lg font-semibold">Partly Cloudy</p>
+            <p id="location" class="text-sm">Gloucester, United Kingdom</p>
+            <h1 id="temperature" class="text-5xl font-bold my-4">+7°C</h1>
+      
+            <div class="flex justify-around mt-4">
+              <div>
+                <p class="text-sm">Thu</p>
+                <div class="text-2xl">🌧️</div>
+                <p id="temp-thu">+8°C</p>
+              </div>
+              <div>
+                <p class="text-sm">Fri</p>
+                <div class="text-2xl">🌤️</div>
+                <p id="temp-fri">+10°C</p>
+              </div>
+              <div>
+                <p class="text-sm">Sat</p>
+                <div class="text-2xl">☀️</div>
+                <p id="temp-sat">+9°C</p>
+              </div>
+            </div>
+      
+            <a href="https://www.weatherapi.com/">
+              <p class="text-xs mt-4 text-blue-500">WeatherAPI.com</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+        <script>
+          document.addEventListener("DOMContentLoaded", async function () {
+            const apiKey = "c010e72b3e50cca725e0b2559b3e4ffe"; // Replace with your WeatherAPI key
+            const location = "Gloucester";
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
+
+            try {
+              const response = await fetch(url);
+              const data = await response.json();
+
+              // Set main weather details
+              document.getElementById(
+                "location"
+              ).textContent = `${data.location.name}, ${data.location.country}`;
+              document.getElementById("condition").textContent =
+                data.current.condition.text;
+              document.getElementById(
+                "temperature"
+              ).textContent = `+${data.current.temp_c}°C`;
+
+              // Weather icons
+              const conditionIcon = data.current.condition.text.toLowerCase();
+              document.getElementById("weather-icon").textContent =
+                getWeatherIcon(conditionIcon);
+
+              // Set 3-day forecast
+              const forecast = data.forecast.forecastday;
+              document.getElementById(
+                "temp-thu"
+              ).textContent = `+${forecast[0].day.avgtemp_c}°C`;
+              document.getElementById(
+                "temp-fri"
+              ).textContent = `+${forecast[1].day.avgtemp_c}°C`;
+              document.getElementById(
+                "temp-sat"
+              ).textContent = `+${forecast[2].day.avgtemp_c}°C`;
+            } catch (error) {
+              console.error("Error fetching weather data:", error);
+            }
+          });
+
+          // Function to return weather icons based on conditions
+          function getWeatherIcon(condition) {
+            if (condition.includes("rain")) return "🌧️";
+            if (condition.includes("cloudy")) return "☁️";
+            if (condition.includes("clear") || condition.includes("sunny"))
+              return "☀️";
+            if (condition.includes("snow")) return "❄️";
+            return "🌤️"; // Default to partly cloudy
+          }
+        </script>
+      </div>
+    </div>
+    <footer class="bg-gray-800 text-white font-serif">
+      <div class="container mx-auto px-4 p-5">
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-8"
+        >
+          <!-- Box 1: Title, Text, and Button -->
+          <div class="flex flex-col items-center space-y-4">
+            <h3 class="text-xl font-bold">Stay In the Weather</h3>
+            <p class="text-gray-300 max-w-xl">
+              Stay updated on current weather conditions and forecasts with our
+              weather section. Whether it's sunshine, rain, or snow, we provide
+              accurate and timely information to help you plan your day. Check
+              back frequently for real-time updates and make informed decisions
+              based on the latest weather patterns.
+            </p>
+            <button
+              class="bg-[#07D8FD] hover:bg-black text-blue-900 font-semibold py-2 px-4 rounded transition duration-300"
+            >
+              Read More!
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Box 2: Logo and Title -->
+      <div class="bg-[#07D8FD]">
+        <div class="flex flex-row justify-center space-y-4 py-3 mt-5">
+          <img
+            src="../assets/img/logo.png"
+            alt="Logo"
+            class="w-25 h-25 object-contain"
+          />
+          <!-- Copyright -->
+          <div class="mt-8 text-center text-gray-900 text-lg">
+            &copy; 2025 Weather. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
